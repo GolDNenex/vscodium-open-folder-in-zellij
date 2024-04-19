@@ -1,0 +1,74 @@
+{
+  "name": "open-folder-in-zellij",
+  "version": "0.0.1",
+  "displayName": "Open folder in Zellij",
+  "description": "Open folder in Zellij from VSCodium",
+  "publisher": "GolDNenex",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GolDNenex/open-folder-in-zellij"
+  },
+  "icon": "icon/128.png",
+  "keywords": [
+    "vscode",
+    "open",
+    "folder",
+    "zellij",
+    "extensions",
+    "click",
+    "project",
+    "folder"
+  ],
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "title": "Open folder in Zellij",
+        "command": "vscode-extensions.openfolderinzellij"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "vscode-extensions.openfolderinzellij"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "npm run esbuild",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run clean && npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "clean": "rm -rf out/*"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.77.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "esbuild": "^0.17.18",
+    "minify": "^9.2.0"
+  }
+}
